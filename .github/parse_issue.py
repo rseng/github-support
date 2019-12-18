@@ -39,10 +39,10 @@ except:
 output_dir = os.path.join(root, "issues")
 issue_dir = os.path.join(output_dir, md5)
 
-exists = False
+exists = True
 for outdir in [output_dir, issue_dir]:
     if not os.path.exists(outdir):
-        exists = True
+        exists = False
         os.mkdir(outdir)
 
 # For a simple organization, we will store the body of content in a file named
