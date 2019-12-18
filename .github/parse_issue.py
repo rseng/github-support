@@ -51,5 +51,5 @@ output_file = os.path.join(issue_dir, "%s.md" % issue_number)
 # A more suitable flat format database could likely be used here
 with open(output_file, 'w') as filey:
     filey.writelines("#%s\n" % issue.get('title'))
-    filey.writelines("Submitted by %s %s\n" % issue.get('user')['login'], issue.get('author_association'))
+    filey.writelines("Submitted by %s %s\n" % (issue.get('user')['login'], issue.get('author_association')))
     filey.writelines(body)
