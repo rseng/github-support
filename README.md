@@ -26,7 +26,9 @@ It might look something like this:
  - the user can preview and add additional detail to the issue
  - the issue is assigned an identified based on a hash of it's metadata
  - a GitHub workflow will check the hash, and direct the user to another issue if it's already open
+ - the metadata about the error is pushed to a support repository (akin to this example) that serves as a flat file database.
 
+And then the errors database can be used to derive insights about your software.
 This repository is an example of exactly that. The repository itself provides the following 
 files:
 
@@ -45,13 +47,20 @@ You can install that with the [requirements.txt](requirements.txt) file.
 pip install -r requirements.txt
 ```
 
+Note that this version is currently under review, so you'd want to install from it's branch:
+
+```bash
+git clone -b add/headless-github-flow https://github.com/vsoch/helpme
+cd helpme
+python setup.py install
+```
+
 ### Start with an Example
 
 Once you've installed, take a look at [example.py](example.py) to see what is going on.
 We basically catch an exception, generate an identifier from some of its metadata,
 and then generate a helpme helper for GitHub to post an issue for it. You can take a look
-at an [example issue](https://github.com/rseng/github-support/issues/1) here! If you
-want more examples of arguments and usage of helpme, see [the GitHub headless docs](https://vsoch.github.io/helpme/helper-github#headless).
+at an [example issue](https://github.com/rseng/github-support/issues/1) here, or an [example issue](https://github.com/rseng/github-support/issues/14) that was closed when it was found to exist. 
 
 ### Choose a Workflow
 
@@ -123,6 +132,20 @@ would basically want to update the [parse_issue.py](.github/parse_issue.py) and
 [report_issue](.github/workflows/report_issue.yml) workflow to clone and update
 another repository with issues.
 
+### How automated do you want it?
+
+Depending on how you instantiate the helper, you can require the user to export a HELPME_GITHUB_TOKEN
+
+```python
+helper = get_helper('github', require_token=True)
+```
+
+Although the URL is printed to the terminal for the user to open, this might be desired for headless environments. Or you can skip the verification of the whitelisted environment variables:
+
+```python
+helper = get_helper('github', confirm=False)
+```
+
 ## Questions?
 
-Would you like help to write a custom workflow? Please [open an issue](https://github.com/rseng/github-support/issues) and I'd be happy to,
+Would you like help to write a custom workflow? Please [open an issue](https://github.com/rseng/github-support/issues) and I'd be happy to help. If you want more examples of arguments and usage of helpme, see [the GitHub headless docs](https://vsoch.github.io/helpme/helper-github#headless).
