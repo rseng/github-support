@@ -40,7 +40,7 @@ files:
 
 ### Install helpme
 
-You'll need the [helpme](https://vsoch.github.io/helpme) command line client, version 0.0.39 or later.
+You'll need the [helpme](https://vsoch.github.io/helpme) command line client, version 0.0.40 or later.
 You can install that with the [requirements.txt](requirements.txt) file.
 
 ```bash
