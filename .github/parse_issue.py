@@ -13,7 +13,7 @@ if not payload_path:
 if not os.path.exists(payload_path):
     sys.exit("%s does not exist!" % payload_path)
 
-payload = json.loads(open(payload_path, "r"))
+payload = json.loads(open(payload_path, "r").read())
 
 # The action should be opened, but we check anyway
 action = payload.get("action", "closed")
