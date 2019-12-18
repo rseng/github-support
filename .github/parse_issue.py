@@ -58,7 +58,7 @@ if exists:
         first_issue = issue_numbers[0]
 
         # Derive the previous issue url from the current
-        issue_url = "%s/%s" % (issue.get("html_url").split("/")[:-1], first_issue)
+        issue_url = "%s/%s" % ("/".join(issue.get("html_url").split("/")[:-1]), first_issue)
 
         # Grab variables from the environment
         token = os.environ.get("GITHUB_TOKEN")

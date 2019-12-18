@@ -12,6 +12,8 @@ jobs:
       - name: Setup python environment
         run: conda create --quiet --name helpme
       - name: Derive Issue Data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           export PATH="/usr/share/miniconda/bin:$PATH"
           source activate helpme
