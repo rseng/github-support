@@ -1,6 +1,7 @@
 # GitHub Support
 
 [![https://img.shields.io/badge/rseng-project-purple](https://img.shields.io/badge/rseng-project-purple)](https://rseng.github.io/)
+[![GitHub actions status](https://github.com/rseng/github-support/workflows/report-issue/badge.svg?branch=master)](https://github.com/rseng/github-support/actions?query=branch%3Amaster+workflow%3Areport-issue)
 
 Hey research software engineers! How often do you support a user might trigger a bug
 in your Python software and not tell you about it? Or how often is a bug triggered
@@ -60,4 +61,36 @@ close the issue with a message that points to the previous issue. For
 an example of handling this, see the [report_issue](.github/workflows/report_issue.yml)
 workflow.
 
+## Questions to Think About
 
+## Database Structure
+
+A GitHub repository isn't a real database, but we can sort of think of it as a flat file
+database. Thus, there are some general pointers you might want to think about:
+
+### How should you structure the data?
+You can dump into markdown anticipating some future processing, but likely you'd do better to provide structured metadata, and then parse into a data format like json.
+
+### How should you organize the data?
+This example takes a simple approach of creating an "issues" folder at the root of the
+repository, and then naming subfolders based on identifier hashes. The issues are named
+according to numbers within, meaning that you can quickly parse over files (and sort)
+to find the first opened issue for any particular identifier, or you can quickly 
+count the files to get the number opened for the identifier. There is no reason
+you need to organize your data in this fashion  - I took an approach to limit
+each issue to one file to not have any "GitHub race" conditions, or two opened issues
+trying to edit the same file at once that might hold some summary information.
+
+### Should you use your software repository?
+
+While your issues might be directed to your software repository, the issues database
+doesn't necessarily need to be, and I would recommend keeping the two separate.
+This example repository uses the same repository for the content (examples, etc.) 
+and database so the entire package can be cloned and easily understood. You
+would basically want to update the [parse_issue.py](.github/parse_issue.py) and 
+[report_issue](.github/workflows/report_issue.yml) workflow to clone and update
+another repository with issues.
+
+## Questions?
+
+Would you like help to write a custom workflow? Please [open an issue](https://github.com/rseng/github-support/issues) and I'd be happy to,
