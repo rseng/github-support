@@ -35,7 +35,7 @@ files:
 
 ## Getting Started
 
-You'll need the [helpme](https://vsoch.github.io/helpme) command line client, version 0.0.40 or later.
+You'll need the [helpme](https://vsoch.github.io/helpme) command line client, version 0.0.39 or later.
 You can install that with the [requirements.txt](requirements.txt) file.
 
 ```bash
@@ -45,7 +45,8 @@ pip install -r requirements.txt
 Once you've installed, take a look at [example.py](example.py) to see what is going on.
 We basically catch an exception, generate an identifier from some of its metadata,
 and then generate a helpme helper for github to post an issue for it. You can take a look
-at an [example issue](https://github.com/rseng/github-support/issues/1) here!
+at an [example issue](https://github.com/rseng/github-support/issues/1) here! If you
+want more examples of arguments and usage of helpme, see [the GitHub headless docs](https://vsoch.github.io/helpme/helper-github#headless).
 
 **under development**
 

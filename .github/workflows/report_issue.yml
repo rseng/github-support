@@ -13,8 +13,27 @@ jobs:
       - name: Setup python environment
         run: conda create --quiet --name helpme
 
-      - name: Check formatting
+      - name: Derive Issue Data
         run: |
           export PATH="/usr/share/miniconda/bin:$PATH"
           source activate helpme
-          cat $GITHUB_EVENT_PATH
+          python .github/parse_issue.py
+    - name: Update Upstream Branch
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        UPDATE_BRANCH: master
+      run: |
+        echo "GitHub Actor: ${GITHUB_ACTOR}"
+        git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        git branch
+        echo "Branch to push to is ${UPDATE_BRANCH}"
+        git checkout -b ${UPDATE_BRANCH}
+        git branch
+
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@users.noreply.github.com"
+
+        git pull origin ${UPDATE_BRANCH}
+        git add issues/*
+        git commit -m "Automated deployment to add new issue $(date '+%Y-%m-%d')" --allow-empty
+        git push origin ${UPDATE_BRANCH}

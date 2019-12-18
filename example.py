@@ -9,7 +9,9 @@ def submit_issue(exc):
        can define.
     """
     # The GitHub helper doesn't require a token when the user has a browser handy
-    helper = get_helper("github")
+    # Set confirm to False to not require confirming the environment whitelist
+    # You can set require_token to True to require using the GitHub API.
+    helper = get_helper("github", confirm=False)
 
     # A custom body for the user to add metadata to.
     body = """
