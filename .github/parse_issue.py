@@ -75,6 +75,10 @@ if exists:
             "%s/%s/comments" % (issues_url, issue_number), headers=headers, json=data
         )
 
+        print(issues_url)
+        print(data)
+        print(response)
+
         # If successful, close the new issue
         if response.status_code in [200, 201]:
             data = {"state": "closed"}
@@ -83,6 +87,7 @@ if exists:
             )
 
         else:
+            print(response.json())
             sys.exit("There was a problem commenting on the issue")
 
 
