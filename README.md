@@ -35,6 +35,8 @@ files:
 
 ## Getting Started
 
+### Install helpme
+
 You'll need the [helpme](https://vsoch.github.io/helpme) command line client, version 0.0.39 or later.
 You can install that with the [requirements.txt](requirements.txt) file.
 
@@ -42,13 +44,20 @@ You can install that with the [requirements.txt](requirements.txt) file.
 pip install -r requirements.txt
 ```
 
+### Start with an Example
+
 Once you've installed, take a look at [example.py](example.py) to see what is going on.
 We basically catch an exception, generate an identifier from some of its metadata,
-and then generate a helpme helper for github to post an issue for it. You can take a look
+and then generate a helpme helper for GitHub to post an issue for it. You can take a look
 at an [example issue](https://github.com/rseng/github-support/issues/1) here! If you
 want more examples of arguments and usage of helpme, see [the GitHub headless docs](https://vsoch.github.io/helpme/helper-github#headless).
 
-**under development**
+### Choose a Workflow
 
-The next steps are to add workflows that will parse the issues and write to the
-database. To be continued!
+Once the issue is submit, it's the workflow that derives the logic for how to handle it.
+For example, if an identifier generates a hash that is already found, we would want to
+close the issue with a message that points to the previous issue. For
+an example of handling this, see the [report_issue](.github/workflows/report_issue.yml)
+workflow.
+
+

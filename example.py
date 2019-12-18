@@ -28,7 +28,7 @@ def submit_issue(exc):
     identifier = "%s|%s|%s" % (type(exc).__name__, exc.name, exc.msg)
     helper.run_headless(
         identifier=identifier,
-        title="[helpme] %s" % exc.msg,
+        title=exc.msg,
         body=body,
         repo="rseng/github-support",
     )
