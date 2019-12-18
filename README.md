@@ -63,13 +63,45 @@ workflow.
 
 ## Questions to Think About
 
-## Database Structure
+### What should I use for an identifier?
 
-A GitHub repository isn't a real database, but we can sort of think of it as a flat file
-database. Thus, there are some general pointers you might want to think about:
+The level of detail that you want to include with your string identifier is up to you,
+but you should be consistent as changes would require a new structure. For example,
+you might be happy including the calling module relative path and the error message,
+but not want to include the software version so that an error that reports the same
+message and location (across versions) is considered the same. On the other hand, you
+might want to add a level of nesting to folder organization to take versions into 
+account. For example:
+
+```
+issues/
+   0.0.1/
+     md5.5fddcd18252717a7a11c494d24b16d4e/
+        8.md
+   0.0.2/
+     md5.5fddcd18252717a7a11c494d24b16d4e
+        10.md
+```
+
+The above structure would suggest that the same issue (based on the identifier) was
+found across two versions of software. On the other hand, if version is not important
+to you, you might have this instead:
+
+```
+issues/
+     md5.5fddcd18252717a7a11c494d24b16d4e
+        8.md
+        10.md
+```
+
+You would want to provide whatever metadata is needed by the issue parser into the helpme body,
+and then have the GitHub workflow parse it to derive the desired organization.
 
 ### How should you structure the data?
-You can dump into markdown anticipating some future processing, but likely you'd do better to provide structured metadata, and then parse into a data format like json.
+A GitHub repository isn't a real database, but we can sort of think of it as a flat file
+database, and in this dummy example I chose to use markdown so that it would render
+the issue content easily. You could dump into markdown anticipating some future processing
+as I've done here, but likely you'd do better to provide structured metadata, and then parse into a data format like json.
 
 ### How should you organize the data?
 This example takes a simple approach of creating an "issues" folder at the root of the
