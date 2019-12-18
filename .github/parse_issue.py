@@ -38,7 +38,7 @@ except:
 output_dir = os.path.join(root, "issues")
 issue_dir = os.path.join(output_dir, md5)
 
-for outdir in [output_dir, issue_dir]
+for outdir in [output_dir, issue_dir]:
     if not os.path.exists(outdir):
         os.mkdir(outdir)
 
