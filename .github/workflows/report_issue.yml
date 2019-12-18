@@ -1,0 +1,20 @@
+name: report-issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  parseIssue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup python environment
+        run: conda create --quiet --name helpme
+
+      - name: Check formatting
+        run: |
+          export PATH="/usr/share/miniconda/bin:$PATH"
+          source activate helpme
+          cat $GITHUB_EVENT_PATH
