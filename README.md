@@ -3,7 +3,7 @@
 [![https://img.shields.io/badge/rseng-project-purple](https://img.shields.io/badge/rseng-project-purple)](https://rseng.github.io/)
 [![GitHub actions status](https://github.com/rseng/github-support/workflows/report-issue/badge.svg?branch=master)](https://github.com/rseng/github-support/actions?query=branch%3Amaster+workflow%3Areport-issue)
 
-Hey research software engineers! How often do you support a user might trigger a bug
+Hey research software engineers! How often might a user trigger a bug
 in your Python software and not tell you about it? Or how often is a bug triggered
 but not enough information is provided about it?
 
