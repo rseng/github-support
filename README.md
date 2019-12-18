@@ -41,3 +41,13 @@ You can install that with the [requirements.txt](requirements.txt) file.
 ```bash
 pip install -r requirements.txt
 ```
+
+Once you've installed, take a look at [example.py](example.py) to see what is going on.
+We basically catch an exception, generate an identifier from some of its metadata,
+and then generate a helpme helper for github to post an issue for it. You can take a look
+at an [example issue](https://github.com/rseng/github-support/issues/1) here!
+
+**under development**
+
+The next steps are to add workflows that will parse the issues and write to the
+database. To be continued!

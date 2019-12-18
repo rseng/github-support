@@ -4,17 +4,20 @@ from helpme.main import get_helper
 
 
 def submit_issue(exc):
-    """a helper function to submit an issue based on an exception"""
+    """a helper function to submit an issue based on an exception. This
+       is overly commented to walk you through how this works, and what you
+       can define.
+    """
     # The GitHub helper doesn't require a token when the user has a browser handy
     helper = get_helper("github")
 
     # A custom body for the user to add metadata to.
     body = """
-## What is the problem?
+#### What is the problem?
 <!-- Please write a few sentences about the issue-->
-## What steps will reproduce the problem?
+#### What steps will reproduce the problem?
 <!-- What triggered this error? -->
-## Is there anything else that would be useful to know in this context?
+#### Is there anything else that would be useful to know in this context?
 """
 
     # For a simple identifier for the hash, we will just use the exception
